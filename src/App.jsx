@@ -6,12 +6,14 @@ import Events from "./pages/Events";
 import Resources from "./pages/Resources";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import ScrollToTop from "./components/ui/ScrollToTop";
 
 function App() {
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
         <Navbar />
+        <ScrollToTop />
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
