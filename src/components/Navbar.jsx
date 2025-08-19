@@ -1,9 +1,10 @@
-import React from "react"; 
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Home, Calendar, BookOpen, Info, Mail, Code } from "lucide-react";
+import logo from "./images/HackHubIcon.png"; // Adjust the path as necessary
 
 export default function Navbar() {
-  const location = useLocation(); // get current path
+  const location = useLocation();
 
   const menuItems = [
     { name: "Home", icon: <Home size={24} />, path: "/" },
@@ -17,11 +18,12 @@ export default function Navbar() {
     <>
       {/* Desktop Navbar */}
       <nav className="fixed top-0 w-full z-50 backdrop-blur-md text-white px-6 py-4 shadow-lg hidden md:flex justify-between items-center max-w-7xl mx-auto">
-        <Link to="/" className="text-2xl font-extrabold tracking-wide flex items-center">
-          <Code size={32} />
-          <span className="ml-2">HackHub</span>
+        {/* Logo Icon */}
+        <Link to="/" className="text-2xl font-extrabold tracking-wide">
+          <img src={logo} alt="HackHub Logo" className="h-10 w-auto" />
         </Link>
 
+        {/* Menu Items */}
         <div className="flex space-x-10">
           {menuItems.map((item) => {
             const isActive = location.pathname === item.path;
@@ -31,9 +33,8 @@ export default function Navbar() {
                 to={item.path}
                 className="flex flex-col items-center group relative"
               >
-                {/* Change icon color if active */}
                 {React.cloneElement(item.icon, {
-                  color: isActive ? "#a855f7" : "#ffffff", // purple if active, white otherwise
+                  color: isActive ? "#a855f7" : "#ffffff",
                 })}
                 <span className="absolute -bottom-6 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity">
                   {item.name}
@@ -45,7 +46,7 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile Bottom Navbar */}
-      <nav className="fixed bottom-0 left-0 w-full backdrop-blur-md text-white flex justify-around items-center py-3 md:hidden z-50 shadow-t-lg">
+      <nav className="fixed bottom-0 left-0 w-full backdrop-blur-md text-white flex justify-around items-center py-3 md:hidden z-50">
         {menuItems.map((item) => {
           const isActive = location.pathname === item.path;
           return (
@@ -55,9 +56,9 @@ export default function Navbar() {
               className="flex flex-col items-center text-xs px-2"
             >
               {React.cloneElement(item.icon, {
-                color: isActive ? "#a855f7" : "#ffffff", // purple if active
+                color: isActive ? "#a855f7" : "#ffffff",
               })}
-              <span className="mt-1 text-[10px] text-center truncate w-12">
+              <span className="mt-1 truncate text-[10px] text-center w-12">
                 {item.name}
               </span>
             </Link>

@@ -1,6 +1,7 @@
 import Navbar from "../components/Navbar";
 import ResourceCard from "../components/ui/ResourceCard";
 import { Code, BookOpen, Terminal, GitBranch, Database, Server } from "lucide-react";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 
 const resources = [
